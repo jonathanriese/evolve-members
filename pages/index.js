@@ -1,8 +1,13 @@
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
+import { useState } from 'react';
 import Head from 'next/head';
 
-export default function Home({ modules }) {
+export default function Home({ modules}) {
+
+  const pw = "Evolvenow062021";
+  const [password, setPassword] = useState("");
+  const [secure, setSecure] = useState(false);
 
   return <div>
       <Head>
@@ -13,13 +18,39 @@ export default function Home({ modules }) {
       <Navbar />
 
       <main>
-        <section class="modules">
+        <section className="modules">
 
-        <nav class="moduleMenu">
+        <div className={`password ${secure ? 'hidden' : ''}`}>
+          <form>
+            <label>
+              <p>Please enter the member password to proceed</p>
+              <input
+                type="text"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              ></input>
+            </label>
+            <button
+              type="submit"
+              className="mt-3 bg-green-400 text-white p-2 font-bold rounded hover:bg-green-600"
+              onClick={(e) => {
+                e.preventDefault()
+                if (password == pw) {
+                    setSecure(true)
+                }
+              }}
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+
+        <nav className={`moduleMenu ${secure ? '' : 'hidden'}`}>
           <h4>Modules</h4>
           {modules && modules.map((module) => (
             <a href={`#section${module.id}`} key={module.number}>
-              <div class="moduleButton">
+              <div className="moduleButton">
                   <p>
                     <b>{module.number}</b>
                     {module.title}
@@ -30,17 +61,17 @@ export default function Home({ modules }) {
 
         </nav>
 
-        <div class="contentWrapper">
+        <div className={`contentWrapper ${secure ? '' : 'hidden'}`}>
 
         {modules && modules.map((module) => (
-            <div class="module" id={`section${module.id}`} key={module.number}>
+            <div className="module" id={`section${module.id}`} key={module.number}>
               <h1>
                 {module.title}
               </h1>
               <h5>
                 {`Module ${module.number} — ${module.date}`}
               </h5>
-              <div class="videoResponsive">
+              <div className="videoResponsive">
                 <iframe
                   src={`https://www.youtube.com/embed/${module.videoID}`}
                   frameBorder="0"
