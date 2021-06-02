@@ -194,6 +194,7 @@ header {
     flex-direction: row;
     width: 100%;
     justify-content: flex-start;
+    align-items: baseline;
 }
 
 header a {

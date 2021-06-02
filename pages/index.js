@@ -14,6 +14,9 @@ export default function Home({ modules}) {
       <Head>
         <title>Evolve Academy – Member Space</title>
         <link rel='icon' href='https://res.cloudinary.com/dffi51zip/image/upload/v1622571758/Evolve/favicon_nlhxb3.png' />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@700&family=Karla:wght@300;400;500&display=swap" rel="stylesheet" />
+
       </Head>
 
       <Navbar />
