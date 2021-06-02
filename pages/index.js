@@ -1,9 +1,10 @@
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { useState } from 'react';
+
 import Head from 'next/head';
 
-export default function Home({ modules}) {
+export default function Home({ modules, mdxSource }) {
 
   const pw = "Evolvenow062021";
   const [password, setPassword] = useState("");
@@ -61,7 +62,7 @@ export default function Home({ modules}) {
               <div className="moduleButton">
                   <p>
                     <b>{module.number}</b>
-                    {module.title}
+                    {/* <MDXRemote {...mdxSource[module.number - 1]} /> */}
                   </p>
               </div>
             </a>
@@ -79,17 +80,11 @@ export default function Home({ modules}) {
               <h5>
                 {`Module ${module.number} — ${module.date}`}
               </h5>
-              <div className="videoResponsive">
-                <iframe
-                  src={`https://www.youtube.com/embed/${module.videoID}`}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  title="Embedded youtube"
-                />
+              <div>
+                <a src={module.videoID}>Zoom Recording →</a>
               </div>
               <div>
-                <a src={module.presentationlink}>Presentation →</a>
+                <a src={module.presentationLink}>Presentation →</a>
               </div>
               <div>
                 {module.text}
@@ -109,8 +104,11 @@ export async function getStaticProps() {
   // get modules from api
   const res = await fetch('https://evolve-member.herokuapp.com/modules');
   const modules = await res.json();
+  // const text = await modules.map(x => x.text);
+  // const mdxSource = await modules.map(x => serialize(x.text));
+
 
   return {
-    props: { modules },
+    props: { modules},
   }
 }
