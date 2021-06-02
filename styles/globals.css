@@ -116,7 +116,6 @@ h5 {
 
 section, header, footer {
     padding: 0 1.5rem;
-    margin:  5rem 0;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -179,9 +178,6 @@ footer li:last-of-type a {
 }
 
 @media screen and (min-width: 800px) {
-    section {
-        margin: 10rem 0;
-    }
     section, header, footer {
         padding-left: 2rem;
         padding-right: 2rem;
@@ -340,6 +336,9 @@ main {
         max-width: 800px;
         width: calc( 100% - 240px - 3rem);
         align-self: flex-start;
+    }
+    main {
+        min-height: calc(100vh - 240px);
     }
 }
 
