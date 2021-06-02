@@ -62,7 +62,7 @@ export default function Home({ modules, mdxSource }) {
               <div className="moduleButton">
                   <p>
                     <b>{module.number}</b>
-                    {module.text}
+                    {module.title}
                     {/* <MDXRemote {...mdxSource[module.number - 1]} /> */}
                   </p>
               </div>
