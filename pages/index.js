@@ -8,6 +8,7 @@ export default function Home({ modules}) {
   const pw = "Evolvenow062021";
   const [password, setPassword] = useState("");
   const [secure, setSecure] = useState(false);
+  const [failed, setFailed] = useState(false);
 
   return <div>
       <Head>
@@ -23,7 +24,8 @@ export default function Home({ modules}) {
         <div className={`password ${secure ? 'hidden' : ''}`}>
           <form>
             <label>
-              <p>Please enter the member password to proceed</p>
+              <p className={`${failed ? 'hidden' : ''}`}>Please enter the member password to proceed</p>
+              <p className={`failed ${failed ? '' : 'hidden'}`}>You entered the wrong password, please try again</p>
               <input
                 type="text"
                 placeholder="Password"
@@ -38,6 +40,9 @@ export default function Home({ modules}) {
                 e.preventDefault()
                 if (password == pw) {
                     setSecure(true)
+                }
+                else {
+                  setFailed(true)
                 }
               }}
             >

@@ -281,6 +281,7 @@ div.contentWrapper {
 
 main {
     min-height: 70vh;
+    margin: 3rem 0 8rem 0;
 }
 
 .password p {
@@ -305,8 +306,17 @@ main {
     color: var(--bright-color);
 }
 
+.password button:hover {
+    background-color: var(--contrast-color-orange);
+    cursor: pointer;
+}
+
 .hidden {
     display: none !important;
+}
+
+p.failed {
+    color: var(--contrast-color-orange);
 }
 
 
@@ -316,9 +326,6 @@ main {
     }
     .password p {
         margin-bottom: 1.5rem;
-    }
-    section.modules  {
-        margin-top: 2rem;
     }
     nav.moduleMenu {
         display: flex;
@@ -339,6 +346,13 @@ main {
     }
     main {
         min-height: calc(100vh - 240px);
+        margin-top: 0;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    nav.moduleMenu {
+        left: 928px;
     }
 }
 
