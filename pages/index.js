@@ -1,10 +1,11 @@
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { useState } from 'react';
+import ReactMarkdown from 'react-markdown';
 
 import Head from 'next/head';
 
-export default function Home({ modules, mdxSource }) {
+export default function Home({ modules }) {
 
   const pw = "Evolvenow062021";
   const [password, setPassword] = useState("");
@@ -63,7 +64,6 @@ export default function Home({ modules, mdxSource }) {
                   <p>
                     <b>{module.number}</b>
                     {module.title}
-                    {/* <MDXRemote {...mdxSource[module.number - 1]} /> */}
                   </p>
               </div>
             </a>
@@ -88,7 +88,7 @@ export default function Home({ modules, mdxSource }) {
                 <a src={module.presentationLink}>Presentation →</a>
               </div>
               <div>
-                {module.text}
+                <ReactMarkdown children={module.text} />
               </div>
             </div>
         ))}
@@ -105,9 +105,6 @@ export async function getStaticProps() {
   // get modules from api
   const res = await fetch('https://evolve-member.herokuapp.com/modules');
   const modules = await res.json();
-  // const text = await modules.map(x => x.text);
-  // const mdxSource = await modules.map(x => serialize(x.text));
-
 
   return {
     props: { modules},
