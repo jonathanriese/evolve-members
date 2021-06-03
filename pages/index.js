@@ -91,6 +91,7 @@ export default function Home({ modules }) {
                 <a href={module.presentationLink}>Presentation →</a>
               </div>
               <div>
+                <h3>Assignment</h3>
                 <ReactMarkdown children={module.text} />
               </div>
             </div>
