@@ -1,6 +1,7 @@
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { useState } from 'react';
+import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 
 import Head from 'next/head';
@@ -59,14 +60,16 @@ export default function Home({ modules }) {
         <nav className={`moduleMenu ${secure ? '' : 'hidden'}`}>
           <h4>Modules</h4>
           {modules && modules.map((module) => (
-            <a href={`#section${module.id}`} key={module.number}>
+            <Link href={`#section${module.id}`} key={module.number}>
+              <a>
               <div className="moduleButton">
                   <p>
                     <b>{module.number}</b>
                     {module.title}
                   </p>
               </div>
-            </a>
+              </a>
+            </Link>
           ))}
 
         </nav>
@@ -82,10 +85,10 @@ export default function Home({ modules }) {
                 {`Module ${module.number} — ${module.date}`}
               </h5>
               <div>
-                <a src={module.videoID}>Zoom Recording →</a>
+                <a href={module.videoID}>Zoom Recording →</a>
               </div>
               <div>
-                <a src={module.presentationLink}>Presentation →</a>
+                <a href={module.presentationLink}>Presentation →</a>
               </div>
               <div>
                 <ReactMarkdown children={module.text} />
