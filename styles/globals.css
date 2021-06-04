@@ -26,10 +26,17 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--dark-color);
 }
 
-
 ul {
-    list-style: disc inside;
+    list-style: none;
+}
+
+.modules ul {
+    list-style: disc;
     margin-top: 0.5rem;
+}
+
+.modules li {
+    margin-left: 1rem;
 }
 
 a {
