@@ -85,10 +85,10 @@ export default function Home({ modules }) {
                 {`Module ${module.number} — ${module.date}`}
               </h5>
               <div>
-                <a href={module.videoID}>Zoom Recording →</a>
+                <a href={module.videoID} target="_blank" and rel="noopener noreferrer">Zoom Recording →</a>
               </div>
               <div>
-                <a href={module.presentationLink}>Presentation →</a>
+                <a href={module.presentationLink} target="_blank" and rel="noopener noreferrer">Presentation →</a>
               </div>
               <div>
                 <h3>Assignment</h3>
