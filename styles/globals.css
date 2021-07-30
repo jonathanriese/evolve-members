@@ -71,7 +71,7 @@ p {
     color: var(--black-color);
 }
 
-p + p {
+p + p, ul + p {
     margin-top: 1rem;
 }
 
